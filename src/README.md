@@ -1,7 +1,7 @@
 ## Requirements
 
-- Python
-- MySQL database
+- Python 3,9+
+- MySQL database 5.7
 - pip
 
 ## Installation
@@ -12,32 +12,24 @@
    cd your-repo
    ```
 
-2. Create a .env file in the root folder:
-   ```ini
-   DB_HOST=localhost
-   DB_PORT=3306
-   DB_NAME=db_name
-   DB_USER=user
-   DB_PASSWORD=password
-   JWT_SECRET_KEY=secretkey
+2. Install dependencies:
+   ```bash
+   pip install fastapi uvicorn sqlalchemy pymysql
    ```
 
-3. Install dependencies (or do it in venv):
-   ```bash
-   pip install -r requirements.txt
+3. Set connection to MySQL in database.py:
    ```
+   DATABASE_URL = "mysql+pymysql://root@localhost/pakyliak"
+
   
-4. Run database migrations:
-   ```bash
-   python db/migrate.py
+4. Create MySQL database:
    ```
+   CREATE DATABASE your_db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
   
-5. Seed the database with initial data:
-   ```bash
-   python db/seed.py
+5. Start server:
+   ```
+   python -m uvicorn main:app --reload
    ```
 
-6. Start the development server:
-   ```bash
-   python app.py
-   ```
+6.  Check your server `http://127.0.0.1:8000`
